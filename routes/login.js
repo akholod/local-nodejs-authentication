@@ -6,7 +6,7 @@ const router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('login', { /*message: req.flash('loginMessage')*/});
+  res.render('login', { message: req.flash('loginMessage')});
 });
 
 module.exports = router;

@@ -7,12 +7,9 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
-
-
 const port = process.env.PORT || 8080;
-
-
-
+require('./config/passport')(passport);
+require('./db');
 
 let routes = require('./routes/index');
 let signup = require('./routes/signup');
@@ -33,16 +30,17 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 //for passport
-//app.use(session());
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(session({secret: 'mysecret'}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
+//router
 app.use('/signup', signup);
 app.use('/login', login);
 app.use('/', routes);
 
-
+//listen port
 app.listen(port, () => {
   console.log('App listen at port ' + port);
 });
@@ -69,7 +67,6 @@ if (app.get('env') === 'development') {
 }
 
 // production error handler
-// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
@@ -77,6 +74,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

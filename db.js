@@ -8,5 +8,5 @@ mongoose.connect(configDB.url);
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
-
+console.log('moongoose connect');
 module.exports = db;
