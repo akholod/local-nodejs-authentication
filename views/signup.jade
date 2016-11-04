@@ -42,3 +42,6 @@ block content
             .form-group
                 .col-sm-offset-3.col-sm-9
                     button.btn.btn-info(type='submit') Sign Up
+        .row
+            if (message.length)
+                p.alert.alert-warning.text-center= message

@@ -14,6 +14,7 @@ require('./db');
 let routes = require('./routes/index');
 let signup = require('./routes/signup');
 let login = require('./routes/login');
+let profile = require('./routes/profile');
 
 let app = express();
 
@@ -38,6 +39,7 @@ app.use(flash());
 //router
 app.use('/signup', signup);
 app.use('/login', login);
+app.use('/profile', profile);
 app.use('/', routes);
 
 //listen port
