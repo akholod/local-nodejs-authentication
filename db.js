@@ -3,7 +3,7 @@
  */
 const mongoose = require('mongoose');
 const configDB = require('./config/db');
-mongoose.connect(configDB.url);
+mongoose.connect(process.env.MONGOLAB_URI);
 
 //create db connection
 var db = mongoose.connection;
