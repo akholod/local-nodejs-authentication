@@ -11,11 +11,14 @@ const port = process.env.PORT || 8080;
 require('./config/passport')(passport);
 require('./db');
 
+//import routes
 let routes = require('./routes/index');
 let signup = require('./routes/signup');
 let login = require('./routes/login');
 let profile = require('./routes/profile');
+let logout = require('./routes/logout');
 
+//init app
 let app = express();
 
 // view engine setup
@@ -23,7 +26,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,6 +42,7 @@ app.use(flash());
 app.use('/signup', signup);
 app.use('/login', login);
 app.use('/profile', profile);
+app.use('/logout', logout);
 app.use('/', routes);
 
 //listen port

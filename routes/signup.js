@@ -7,7 +7,7 @@ const passport = require('passport');
 
 router.post('/', passport.authenticate('local-signup', {
     successRedirect : '/profile',
-    failureRedirect : '/',
+    failureRedirect : '/signup',
     failureFlash : true
 }));
 
