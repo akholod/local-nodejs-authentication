@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const configDB = require('./config/db');
 mongoose.connect(configDB.url);
 
+//create db connection
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
