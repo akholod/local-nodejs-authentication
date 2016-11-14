@@ -10,5 +10,5 @@ block content
             h3= user.local.password + ' - your hashed password'
         else
             h3= user.facebook.id + ' - you facebook id'
-            h3= 'Hello ' + user.facebook.displayName
+            h3= 'Hello ' + user.facebook.name
         a(href='/logout').btn.btn-warning Log out
