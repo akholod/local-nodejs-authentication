@@ -18,6 +18,7 @@ let signup = require('./routes/signup');
 let login = require('./routes/login');
 let profile = require('./routes/profile');
 let logout = require('./routes/logout');
+let authFacebook = require('./routes/authFacebook');
 
 //init app
 let app = express();
@@ -44,6 +45,7 @@ app.use('/signup', signup);
 app.use('/login', login);
 app.use('/profile', profile);
 app.use('/logout', logout);
+app.use('/auth/facebook', authFacebook);
 app.use('/', routes);
 
 //listen port
