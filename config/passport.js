@@ -114,7 +114,7 @@ module.exports = function(passport) {
                         newUser.facebook.id = profile.id; // set the users facebook id
                         newUser.facebook.token = token;
                         newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
-                        newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
+                        //newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
                     } catch (err) {
                         console.log(new Error(err));
                     }
