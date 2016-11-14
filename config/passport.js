@@ -79,8 +79,6 @@ module.exports = function(passport) {
             if (!user.validPassword(password)) {
                 return done(null, false, req.flash('loginMessage', 'Ololo! Wrong password.'));
             }
-
-
             return done(null, user);
         });
     }));
@@ -107,16 +105,11 @@ module.exports = function(passport) {
                     if (user) {
                         return done(null, user); // user found, return that user
                     }
-
                     var newUser = new User();
-
-                    // set all of the facebook information in our user model
-
                         newUser.facebook.id = profile._json.id; // set the users facebook id
                         newUser.facebook.token = token;
-                        newUser.facebook.name = profile._json.name;
-                        //newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
-
+                        newUser.facebook.name = profile.displayName;
+                        //newUser.facebook.email = profile.emails[0].value;
 
                     // save our user to the database
                     newUser.save(function(err) {
@@ -125,10 +118,7 @@ module.exports = function(passport) {
                         }
                         return done(null, newUser);
                     });
-
                 });
             });
-
         }));
-
 };
