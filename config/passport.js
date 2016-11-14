@@ -92,11 +92,12 @@ module.exports = function(passport) {
         },
 
         function(token, refreshToken, profile, done) {
-
+            console.log(profile);
             process.nextTick(function() {
                 // find the user in the database based on their facebook id
                 User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
 
+                    console.log(profile);
                     // if there is an error, stop everything and return that
                     // ie an error connecting to the database
                     if (err) {
@@ -108,7 +109,7 @@ module.exports = function(passport) {
                     }
 
                     var newUser = new User();
-                    console.log(profile);
+
                     // set all of the facebook information in our user model
 
                         newUser.facebook.id = profile.id; // set the users facebook id
