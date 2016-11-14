@@ -5,7 +5,7 @@ extends layout
 block content
     .container
         h1.text-center User Profile
-        if user.local
+        if user.local.email
             h3= user.local.email + ' - you email'
             h3= user.local.password + ' - your hashed password'
         else
