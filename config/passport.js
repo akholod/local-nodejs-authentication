@@ -112,9 +112,9 @@ module.exports = function(passport) {
 
                     // set all of the facebook information in our user model
 
-                        newUser.facebook.id = profile.id; // set the users facebook id
+                        newUser.facebook.id = profile._json.id; // set the users facebook id
                         newUser.facebook.token = token;
-                        newUser.facebook.name = profile.displayName;
+                        newUser.facebook.name = profile._json.name;
                         //newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
 
 
